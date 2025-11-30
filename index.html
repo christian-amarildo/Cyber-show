@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Show - O Show da Cibersegurança</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <div class="logo-container">
+                <img src="show/images/logo.png" alt="Cyber Show Logo">
+            </div>
+            <h1>CYBER SHOW</h1>
+            <p style="margin-bottom: 2rem; font-size: 1.2rem; color: var(--cyber-blue);">Teste seus conhecimentos em
+                Cibersegurança!</p>
+            <button class="btn" onclick="startGame()">JOGAR AGORA</button>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <div class="game-area">
+                <!-- Prize Indicator -->
+                <div class="prize-indicator">
+                    <span>PERGUNTA VALENDO</span>
+                    <div class="prize-value">R$ <span id="score-display">1.000</span></div>
+                </div>
+
+                <div class="question-container">
+                    <div id="question-text" class="question-text">
+                        Carregando pergunta...
+                    </div>
+                    <div class="answers-grid" id="answers-grid">
+                        <!-- Answers will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Bottom Bar -->
+                <div class="bottom-bar">
+                    <button class="action-btn" id="btn-skip" onclick="openSkipModal()">
+                        <span class="icon">🏃</span> PULAR
+                    </button>
+                    <button class="action-btn" id="btn-cards" onclick="openCardsModal()">
+                        <span class="icon">🃏</span> CARTAS
+                    </button>
+                    <button class="action-btn stop-btn" id="btn-stop" onclick="stopGame()">
+                        <span class="icon">🛑</span> PARAR
+                    </button>
+                </div>
+            </div>
+            <div class="presenter-area">
+                <!-- Presenter image is set via CSS background -->
+            </div>
+
+            <!-- Modals -->
+            <div id="modal-overlay" class="modal-overlay"></div>
+
+            <!-- Cards Modal -->
+            <div id="cards-modal" class="modal">
+                <div class="modal-header">
+                    <h2>Sorteie uma carta!</h2>
+                    <button class="close-btn" onclick="closeModals()">×</button>
+                </div>
+                <div class="cards-container">
+                    <div class="card" onclick="pickCard(0)">
+                        <div class="card-inner">
+                            <div class="card-front">?</div>
+                            <div class="card-back" id="card-0-val">0</div>
+                        </div>
+                    </div>
+                    <div class="card" onclick="pickCard(1)">
+                        <div class="card-inner">
+                            <div class="card-front">?</div>
+                            <div class="card-back" id="card-1-val">1</div>
+                        </div>
+                    </div>
+                    <div class="card" onclick="pickCard(2)">
+                        <div class="card-inner">
+                            <div class="card-front">?</div>
+                            <div class="card-back" id="card-2-val">2</div>
+                        </div>
+                    </div>
+                    <div class="card" onclick="pickCard(3)">
+                        <div class="card-inner">
+                            <div class="card-front">?</div>
+                            <div class="card-back" id="card-3-val">3</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="modal-action-btn" onclick="confirmCard()">Sortear</button>
+            </div>
+
+            <!-- Skip Modal -->
+            <div id="skip-modal" class="modal">
+                <div class="modal-header">
+                    <h2>Deseja pular a pergunta?</h2>
+                    <button class="close-btn" onclick="closeModals()">×</button>
+                </div>
+                <div class="skips-container">
+                    <div class="skip-slot" id="skip-1">
+                        <span class="skip-icon">🏃</span>
+                        <span>PULO 1</span>
+                    </div>
+                    <div class="skip-slot" id="skip-2">
+                        <span class="skip-icon">🏃</span>
+                        <span>PULO 2</span>
+                    </div>
+                    <div class="skip-slot" id="skip-3">
+                        <span class="skip-icon">🏃</span>
+                        <span>PULO 3</span>
+                    </div>
+                </div>
+                <button class="modal-action-btn" onclick="confirmSkip()">Pular</button>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen">
+            <h1 id="result-title">FIM DE JOGO</h1>
+            <p class="message" id="result-message">Você ganhou:</p>
+            <div class="result-score">R$ <span id="final-score">0</span></div>
+            <button class="btn" onclick="resetGame()">JOGAR NOVAMENTE</button>
+        </div>
+    </div>
+
+    <script src="questions.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
