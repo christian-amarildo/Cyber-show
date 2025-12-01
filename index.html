@@ -10,36 +10,36 @@
 
 <body>
     <div class="container">
-        <!-- Start Screen -->
+
+        <!-- Tela Inicial -->
         <div id="start-screen" class="screen active">
             <div class="logo-container">
                 <img src="show/images/logo.png" alt="Cyber Show Logo">
             </div>
-            <h1>CYBER SHOW</h1>
-            <p style="margin-bottom: 2rem; font-size: 1.2rem; color: var(--cyber-blue);">Teste seus conhecimentos em
-                Cibersegurança!</p>
+            <h1>O Show da Cibersegurança</h1>
             <button class="btn" onclick="startGame()">JOGAR AGORA</button>
         </div>
 
-        <!-- Game Screen -->
+        <!-- Tela do Jogo -->
         <div id="game-screen" class="screen">
             <div class="game-area">
-                <!-- Prize Indicator -->
+                <!-- Indicador de Prêmio -->
                 <div class="prize-indicator">
                     <span>PERGUNTA VALENDO</span>
                     <div class="prize-value">R$ <span id="score-display">1.000</span></div>
                 </div>
 
+                <!-- Container da Pergunta -->
                 <div class="question-container">
                     <div id="question-text" class="question-text">
                         Carregando pergunta...
                     </div>
                     <div class="answers-grid" id="answers-grid">
-                        <!-- Answers will be injected here -->
+                        <!-- Respostas serão injetadas aqui via JS -->
                     </div>
                 </div>
 
-                <!-- Bottom Bar -->
+                <!-- Barra Inferior (Ajudas) -->
                 <div class="bottom-bar">
                     <button class="action-btn" id="btn-skip" onclick="openSkipModal()">
                         <span class="icon">🏃</span> PULAR
@@ -52,20 +52,23 @@
                     </button>
                 </div>
             </div>
+
+            <!-- Área do Apresentador -->
             <div class="presenter-area">
-                <!-- Presenter image is set via CSS background -->
+                <!-- Imagem do apresentador definida no CSS -->
             </div>
 
-            <!-- Modals -->
+            <!-- Modais -->
             <div id="modal-overlay" class="modal-overlay"></div>
 
-            <!-- Cards Modal -->
+            <!-- Modal de Cartas -->
             <div id="cards-modal" class="modal">
                 <div class="modal-header">
                     <h2>Sorteie uma carta!</h2>
                     <button class="close-btn" onclick="closeModals()">×</button>
                 </div>
                 <div class="cards-container">
+                    <!-- Cartas com valores ocultos (0, 1, 2, 3 eliminações) -->
                     <div class="card" onclick="pickCard(0)">
                         <div class="card-inner">
                             <div class="card-front">?</div>
@@ -94,13 +97,14 @@
                 <button class="modal-action-btn" onclick="confirmCard()">Sortear</button>
             </div>
 
-            <!-- Skip Modal -->
+            <!-- Modal de Pular -->
             <div id="skip-modal" class="modal">
                 <div class="modal-header">
                     <h2>Deseja pular a pergunta?</h2>
                     <button class="close-btn" onclick="closeModals()">×</button>
                 </div>
                 <div class="skips-container">
+                    <!-- Slots de Pulo (1, 2, 3) -->
                     <div class="skip-slot" id="skip-1">
                         <span class="skip-icon">🏃</span>
                         <span>PULO 1</span>
@@ -118,16 +122,19 @@
             </div>
         </div>
 
-        <!-- Result Screen -->
+        <!-- Tela de Resultado -->
         <div id="result-screen" class="screen">
             <h1 id="result-title">FIM DE JOGO</h1>
-            <p class="message" id="result-message">Você ganhou:</p>
+            <p id="result-message">Você ganhou:</p>
             <div class="result-score">R$ <span id="final-score">0</span></div>
             <button class="btn" onclick="resetGame()">JOGAR NOVAMENTE</button>
         </div>
+
     </div>
 
+    <!-- Dados das Perguntas -->
     <script src="questions.js"></script>
+    <!-- Lógica do Jogo -->
     <script src="script.js"></script>
 </body>
 
